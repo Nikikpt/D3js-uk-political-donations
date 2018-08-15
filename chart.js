@@ -76,6 +76,13 @@ function transition(name) {
 		return fundsType();
 	}
 
+
+function click(d) {
+	var donor = d.donor;
+	window.open("https://www.google.com/search?q=" + donor);
+}
+
+
 function start() {
 
 	node = nodeGroup.selectAll("circle")
@@ -96,6 +103,7 @@ function start() {
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
+	        .on("click", click);
 
 		force.gravity(0)
 			.friction(0.75)
