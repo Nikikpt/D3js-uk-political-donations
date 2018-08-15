@@ -75,11 +75,6 @@ function transition(name) {
 		$("#view-source-type").fadeIn(1000);
 		return fundsType();
 	}
-
-
-function click(d) {
-	var donor = d.donor;
-	window.open("https://www.google.com/search?q=" + donor);
 }
 
 
@@ -103,7 +98,7 @@ function start() {
 		// Alternative title based 'tooltips'
 		// node.append("title")
 		//	.text(function(d) { return d.donor; });
-	        .on("click", click);
+	
 
 		force.gravity(0)
 			.friction(0.75)
