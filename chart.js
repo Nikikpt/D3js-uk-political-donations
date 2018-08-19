@@ -320,7 +320,11 @@ function mouseover(d, i) {
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
 	
-
+        
+	
+	responsiveVoice.speak( donor + amount + "pounds");
+	
+	
 
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
@@ -353,6 +357,11 @@ function mouseover(d, i) {
 	}
 
 function mouseout() {
+	
+	responsiveVoice.cancel();
+	
+	
+
 	// no more tooltips
 		var mosie = d3.select(this);
 
