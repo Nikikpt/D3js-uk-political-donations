@@ -236,3 +236,25 @@ https://github.com/yui/pure/blob/master/LICENSE.md
     color: rgb(0, 120, 231);
     color: #fff
 }
+
+.zoom {
+
+    transition: transform .2s;
+
+}
+
+.zoom:hover {
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4); 
+}
+
+
+
+
+
+
+
+
+
+
+
