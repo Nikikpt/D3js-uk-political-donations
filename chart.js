@@ -190,7 +190,7 @@ function types(e) {
 }
 
 function donationAmounts(e) {
-	node.each(moveToDonationAmountTiers(e.alpha));
+	node.each(moveToDonationAmounts(e.alpha));
 
 
 		node.attr("cx", function(d) { return d.x; })
