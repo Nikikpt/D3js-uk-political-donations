@@ -278,26 +278,28 @@ function moveToFunds(alpha) {
 	function moveToDonationAmounts(alpha) {
 	return function(d) {
 
-		var centreX = 500;
-		var centreY = 145;
+		var centreX;
+		var centreY;
 		
 		
 		if (d.value <= 25000) { 
-			centreY = 400;
-			centreX = 750;
-
+			centreX = svgCentre.x;
+			centreY = svgCentre.y;
 		
 		} else if (d.value <= 500000) {
-			centreY = 700;
-			centreX = 750;
-
+		
+			centreX = svgCentre.x;
+		        centreY = svgCentre.y;
+			
 		} else if (d.value <= 5000000) {
-			centreY = 450;
-			centreX = 700;
-
-		} else  if (d.value <= 20000000) {
-			centreY = 450;
-			centreX = 700;
+			
+			centreX = svgCentre.x;
+			centreY = svgCentre.y;
+			
+			
+                } else  if (d.value <= 20000000) {
+			centreX = svgCentre.x + 450;
+			centreY = svgCentre.y;
 
 		}
 		
