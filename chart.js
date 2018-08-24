@@ -76,15 +76,6 @@ function transition(name) {
 		return fundsType();
 	}
 
-      if (name === "group-by-donation-amount") {
-		$("#initial-content").fadeOut(250);
-		$("#value-scale").fadeOut(250);
-		$("#view-donor-type").fadeOut(250);
-		$("#view-party-type").fadeOut(250);
-		$("#view-source-type").fadeOut(250);
-		$("#view-donation-amount").fadeIn(1000);
-		return donationbyAmountGroup();
-	}
 
 
 
