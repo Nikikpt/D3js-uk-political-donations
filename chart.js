@@ -275,7 +275,7 @@ function moveToFunds(alpha) {
 	};
 	
 	
-	function moveToAmount(alpha) {
+	function moveToDonationAmounts(alpha) {
 	return function(d) {
 		var centreX;
 		var centreY;
