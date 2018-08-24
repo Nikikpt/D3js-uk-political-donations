@@ -283,23 +283,21 @@ function moveToFunds(alpha) {
 		
 		
 		if (d.value <= 25000) { 
-			centreX = svgCentre.x;
-			centreY = svgCentre.y;
+			centreX = svgCentre.x +70;
+			centreY = svgCentre.y -30;
 		
 		} else if (d.value <= 500000) {
-		
-			centreX = svgCentre.x;
-		        centreY = svgCentre.y;
+		        centreX = svgCentre.x +450;
+		        centreY = svgCentre.y -30;
 			
 		} else if (d.value <= 5000000) {
-			
-			centreX = svgCentre.x;
-			centreY = svgCentre.y;
+			centreX = svgCentre.x +250;
+			centreY = svgCentre.y +150;
 			
 			
                 } else  if (d.value <= 20000000) {
-			centreX = svgCentre.x + 450;
-			centreY = svgCentre.y;
+			centreX = svgCentre.x +350;
+			centreY = svgCentre.y +150;
 
 		}
 		
