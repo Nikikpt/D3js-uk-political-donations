@@ -283,7 +283,7 @@ function moveToFunds(alpha) {
 				centreX = svgCentre.x + 30;
 			} else if (d.value <= 50001) {
 				centreY = svgCentre.y + 55;
-				centreX = svgCentre.x + 450;
+				centreX = svgCentre.x + 250;
 			} else if (d.value <= 100001) {
 				centreY = svgCentre.y + 35;
 				centreX = svgCentre.x + 50;
