@@ -292,12 +292,12 @@ function moveToFunds(alpha) {
 			centreX = 750;
 
 		} else if (d.value <= 5000000) {
-			centreY = 600;
-			centreX = 200;
+			centreY = 450;
+			centreX = 700;
 
 		} else  if (d.value <= 20000000) {
-			centreY = 800;
-			centreX = 550;
+			centreY = 450;
+			centreX = 700;
 
 		}
 		
