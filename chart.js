@@ -278,8 +278,8 @@ function moveToFunds(alpha) {
 	function moveToDonationAmounts(alpha) {
 	return function(d) {
 
-		var centreX;
-		var centreY;
+		var centreX = 500;
+		var centreY = 145;
 		
 		
 		if (d.value <= 25000) { 
