@@ -149,6 +149,15 @@ function donorType() {
 		.on("tick", entities)
 		.start();
 }
+
+function donationbyAmountGroup() {
+	force.gravity(0)
+		.friction(0.8)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.on("tick", donationAmounts)
+		.start();
+}
+
 	
 
 function fundsType() {
@@ -183,6 +192,14 @@ function types(e) {
 }
 
 
+function donationAmounts(e) {
+	node.each(moveToDonationAmounts(e.alpha));
+
+
+		node.attr("cx", function(d) { return d.x; })
+			.attr("cy", function(d) {return d.y; });
+
+}
 
 function all(e) {
 	node.each(moveToCentre(e.alpha))
