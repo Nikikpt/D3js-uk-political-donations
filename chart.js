@@ -275,30 +275,25 @@ function moveToFunds(alpha) {
 	};
 	
 	
-	function moveToDonationAmounts(alpha) {
+	function moveToAmount(alpha) {
 	return function(d) {
-
 		var centreX;
 		var centreY;
-		
-		
-		if (d.value <= 25000) { 
+		if (d.value <= 50000){
 			centreX = svgCentre.x +70;
 			centreY = svgCentre.y -30;
-		
-		} else if (d.value <= 500000) {
-		        centreX = svgCentre.x +450;
-		        centreY = svgCentre.y -30;
-			
-		} else if (d.value <= 5000000) {
+		} else if (d.value <= 500000){
+			centreX = svgCentre.x +450;
+			centreY = svgCentre.y -30;
+		} else if (d.value <= 1000000){
+			centreX = svgCentre.x +50;
+			centreY = svgCentre.y +150;
+		} else if (d.value <= 5000000){
 			centreX = svgCentre.x +250;
 			centreY = svgCentre.y +150;
-			
-			
-                } else  if (d.value <= 20000000) {
+		} else {
 			centreX = svgCentre.x +350;
 			centreY = svgCentre.y +150;
-
 		}
 		
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
