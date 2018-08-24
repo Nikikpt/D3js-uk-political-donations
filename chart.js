@@ -147,6 +147,14 @@ function donorType() {
 		.on("tick", entities)
 		.start();
 }
+	
+function donationbyAmountGroup() {
+	force.gravity(0)
+		.friction(0.8)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.on("tick", donationAmounts)
+		.start();
+}
 
 function fundsType() {
 	force.gravity(0)
