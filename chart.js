@@ -76,17 +76,15 @@ function transition(name) {
 		return fundsType();
 	}
 	
-	if (name === "group-by-donation-amount") {
+	if (name === "group-by-amount-type") {
 		$("#initial-content").fadeOut(250);
 		$("#value-scale").fadeOut(250);
 		$("#view-donor-type").fadeOut(250);
-		$("#view-party-type").fadeOut(250);
 		$("#view-source-type").fadeOut(250);
-		$("#view-donation-amount").fadeIn(1000);
-		return donationbyAmountGroup();
+		$("#view-party-type").fadeOut(250);
+		$("#view-amount-type").fadeIn(1000);
+		return partyGroup2();
 	}
-
-
 }
 
 
@@ -142,6 +140,15 @@ function partyGroup() {
 		.colourByParty();
 }
 
+function partyGroup2() {
+	force.gravity(0)
+		.friction(0.8)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.on("tick", parties2)
+		.start();
+		//.colourByParty();
+}
+
 function donorType() {
 	force.gravity(0)
 		.friction(0.8)
@@ -150,15 +157,7 @@ function donorType() {
 		.start();
 }
 
-function donationbyAmountGroup() {
-	force.gravity(0)
-		.friction(0.8)
-		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
-		.on("tick", donationAmounts)
-		.start();
-}
 
-	
 
 function fundsType() {
 	force.gravity(0)
@@ -192,13 +191,11 @@ function types(e) {
 }
 
 
-function donationAmounts(e) {
-	node.each(moveToDonationAmounts(e.alpha));
-
+function parties2(e) {
+	node.each(moveToParties2(e.alpha));
 
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
-
 }
 
 function all(e) {
@@ -245,6 +242,24 @@ function moveToParties(alpha) {
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
+}
+
+function moveToParties2(alpha) {
+	return function(d) {
+		var centreX = svgCentre.x + 75;
+
+			if (d.value <= 1000001) {
+				centreY = svgCentre.y + 15;
+			
+			} else  if (d.value <= maxVal) {
+				centreY = svgCentre.y - 65;
+			} else {
+				centreY = svgCentre.y;
+			}
+
+		d.x += (centreX - d.x) * (brake + 0.06) * alpha * 1.2;
+		d.y += (centreY - 100 - d.y) * (brake + 0.06) * alpha * 1.2;
 	};
 }
 
