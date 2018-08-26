@@ -83,7 +83,7 @@ function transition(name) {
 		$("#view-source-type").fadeOut(250);
 		$("#view-party-type").fadeOut(250);
 		$("#view-amount-type").fadeIn(1000);
-		return partyGroup2();
+		return amounttype();
 	}
 }
 
@@ -140,11 +140,11 @@ function partyGroup() {
 		.colourByParty();
 }
 
-function partyGroup2() {
+function amounttype() {
 	force.gravity(0)
 		.friction(0.8)
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
-		.on("tick", parties2)
+		.on("tick", amountsdonations)
 		.start();
 		//.colourByParty();
 }
@@ -191,8 +191,8 @@ function types(e) {
 }
 
 
-function parties2(e) {
-	node.each(moveToParties2(e.alpha));
+function amountsdonations(e) {
+	node.each(moveToDonationsByAmount(e.alpha));
 
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
@@ -245,7 +245,7 @@ function moveToParties(alpha) {
 	};
 }
 
-function moveToParties2(alpha) {
+function moveToDonationsByAmount(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 75;
 
