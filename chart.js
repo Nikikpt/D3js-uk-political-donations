@@ -249,7 +249,7 @@ function moveToDonationsByAmount(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 75;
 
-			if (d.value <= 1000001) {
+			if (d.value <= 2000001) {
 				centreY = svgCentre.y + 15;
 			
 			} else  if (d.value <= maxVal) {
