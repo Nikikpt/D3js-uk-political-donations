@@ -405,6 +405,8 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
+}
+	
 	var http = new XMLHttpRequest();
 	http.open('HEAD', imageFile, false);
 	http.send();
@@ -412,8 +414,8 @@ function mouseover(d, i) {
 		if ((names.indexOf(donor) > -1)==false) {
 		
 		var elem = document.createElement("img");
-// 		img.id = idCount;
-// 		idCount = idCount+1;	
+                //img.id = idCount;
+                //idCount = idCount+1;	
 		elem.src = imageFile;
 		elem.setAttribute("height", "42");
 		elem.setAttribute("width", "42");
@@ -424,7 +426,7 @@ function mouseover(d, i) {
 	}		
 	
 	
-	}
+	
 
 
 function mouseout() {
