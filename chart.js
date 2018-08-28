@@ -41,6 +41,14 @@ var tooltip = d3.select("#chart")
 
 var comma = d3.format(",.0f");
 
+var newIcon = $("#IconContainer").html();
+var addIt = donor+"<div><img src='" + imageFile +"' class='icon-image' align='middle' onError='this.src=\"https://github.com/favicon.ico\";'/>"+
+	"</div>"
+	$("#IconContainer").html(addIt + newIcon);
+
+
+
+
 function transition(name) {
 	if (name === "all-donations") {
 		$("#initial-content").fadeIn(250);
