@@ -405,7 +405,7 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-}
+
 	
 	var http = new XMLHttpRequest();
 	http.open('HEAD', imageFile, false);
@@ -425,7 +425,7 @@ function mouseover(d, i) {
 		}
 	}		
 	
-	
+}
 	
 
 
