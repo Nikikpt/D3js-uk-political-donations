@@ -154,6 +154,12 @@ height: 100%;
     right: 0
 }
 
+#sidebar {
+    position: absolute;
+    left: 1100px;
+    width: 336px;
+}
+
 /* Value scale */
 
 #value-scale {
