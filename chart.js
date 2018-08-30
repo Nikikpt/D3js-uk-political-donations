@@ -406,11 +406,11 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 
-var Sidebar = $("#mouse-visits").html();
+var Htmlchange = $("#mouse-visits").html();
 	var htmlToAdd = "<div><img src='" + imageFile +"' class='icon-image' align='middle' onError='this.src=\"https://github.com/favicon.ico\";'/>"+
 		"<span>" + donor + "</span>"
 		"</div>"
-	$("#mouse-visits").html(htmlToAdd + Sidebar);
+	$("#mouse-visits").html(htmlToAdd + Htmlchange);
 	
 	}
 	
