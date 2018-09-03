@@ -406,13 +406,20 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 
-var Htmlchange = $("#mouse-visits").html();
-	var htmlToAdd = "<div><img src='" + imageFile +"' class='icon-image' align='middle' onError='this.src=\"https://github.com/favicon.ico\";'/>"+
-		"<span>" + donor + "</span>"
-		"</div>"
-	$("#mouse-visits").html(htmlToAdd + Htmlchange);
-	
-	}
+var http = new XMLHttpRequest();
+http.open('HEAD', imageFile, false);
+http.send();
+if (http.status != 404){
+    if ((names.indexOf(donor) > -1)==false) {
+
+    var elem = document.createElement("img");	
+    elem.src = imageFile;
+    elem.setAttribute("height", "42");
+    elem.setAttribute("width", "42");
+    document.getElementById("sidebar").appendChild(elem);
+    names.push(donor);	
+    }
+}	
 	
 
 
