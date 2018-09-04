@@ -30,10 +30,13 @@ li {
     display: none;
 }
 
-#sidebar {
+/* Images Sidebar */
+#images-sidebar {
     position: absolute;
-    left: 1100px;
-    width: 336px;
+    left: 1045px;
+    width: 288px;
+    height: 42px;
+    top: 106px;
 }
 
 /* View containers */
