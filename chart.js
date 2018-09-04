@@ -5,7 +5,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
-var lists = []; //Donor list
+var dlist = []; //Donor list
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
@@ -407,14 +407,14 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 
-if ((lists.indexOf(donor) > -1) == false) {	
+if ((dlist.indexOf(donor) > -1) == false) {	
 		var element = document.createElement("img");	
 		element.src = imageFile;	
 		element.setAttribute("height", "42");	
 		element.setAttribute("width", "42");
 
 		document.getElementById("images-sidebar").appendChild(element);	
-		lists.push(donor);	
+		dlist.push(donor);	
 	}
 
 	
