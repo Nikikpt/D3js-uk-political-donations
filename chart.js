@@ -5,6 +5,7 @@ var nodes = [];
 var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
+var lists = []; //Donor list
 
 var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
@@ -406,12 +407,14 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 
-var Htmlchange = $("#mouse-visits").html();
-	var htmlToAdd = "<div><img src='" + imageFile +"' class='icon-image' align='middle' onError='this.src=\"https://github.com/favicon.ico\";'/>"+
-		"<span>" + donor + "</span>"
-		"</div>"
-	$("#mouse-visits").html(htmlToAdd + Htmlchange);
-	
+if ((lists.indexOf(donor) > -1) == false) {	
+		var element = document.createElement("img");	
+		element.src = imageFile;	
+		element.setAttribute("height", "42");	
+		element.setAttribute("width", "42");
+
+		document.getElementById("images-sidebar").appendChild(element);	
+		lists.push(donor);	
 	}
 
 	
