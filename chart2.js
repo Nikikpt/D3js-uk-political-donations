@@ -7,18 +7,18 @@ var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
 
 var partyCentres = { 
-    con: { x: w / 3, y: h / 3.3}, 
-    lab: {x: w / 3, y: h / 2.3}, 
-    lib: {x: w / 3	, y: h / 1.8}
+    RecordID: { x: w / 3, y: h / 3.3}, 
+    RecordReported: {x: w / 3, y: h / 2.3}, 
+    CountryCode: {x: w / 3	, y: h / 1.8}
   };
 
 var entityCentres = { 
     company: {x: w / 3.65, y: h / 2.3},
-		union: {x: w / 3.65, y: h / 1.8},
-		other: {x: w / 1.15, y: h / 1.9},
-		society: {x: w / 1.12, y: h  / 3.2 },
-		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3},
+		WaterCategory: {x: w / 3.65, y: h / 1.8},
+		WaterbaseID: {x: w / 1.15, y: h / 1.9},
+		NationnalStationID: {x: w / 1.12, y: h  / 3.2 },
+		WaterBodyType: {x: w / 1.8, y: h / 2.8},
+		Year: {x: w / 3.65, y: h / 3.3},
 	};
 
 var fill = d3.scale.ordinal().range(["#FFFF66", "#009999", "#3333FF"]);
@@ -78,15 +78,6 @@ function transition(name) {
 		return fundsType();
 	}
 	
-	if (name === "group-by-amount-type") {
-		$("#initial-content").fadeOut(250);
-		$("#value-scale").fadeOut(250);
-		$("#view-donor-type").fadeOut(250);
-		$("#view-source-type").fadeOut(250);
-		$("#view-party-type").fadeOut(250);
-		$("#view-amount-type").fadeIn(1000);
-		return amounttype();
-	}
 }
 
 
@@ -142,14 +133,6 @@ function partyGroup() {
 		.colourByParty();
 }
 
-function amounttype() {
-	force.gravity(0)
-		.friction(0.8)
-		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
-		.on("tick", amountsdonations)
-		.start();
-		//.colourByParty();
-}
 
 function donorType() {
 	force.gravity(0)
@@ -193,12 +176,6 @@ function types(e) {
 }
 
 
-function amountsdonations(e) {
-	node.each(moveToDonationsByAmount(e.alpha));
-
-		node.attr("cx", function(d) { return d.x; })
-			.attr("cy", function(d) {return d.y; });
-}
 
 function all(e) {
 	node.each(moveToCentre(e.alpha))
@@ -236,7 +213,7 @@ function moveToCentre(alpha) {
 function moveToParties(alpha) {
 	return function(d) {
 		var centreX = partyCentres[d.party].x + 50;
-		if (d.entity === 'pub') {
+		if (d.river === 'pub') {
 			centreX = 1200;
 		} else {
 			centreY = partyCentres[d.party].y;
@@ -247,28 +224,11 @@ function moveToParties(alpha) {
 	};
 }
 
-function moveToDonationsByAmount(alpha) {
-	return function(d) {
-		var centreX = svgCentre.x + 75;
-
-			if (d.value <= 2000001) {
-				centreY = svgCentre.y + 15;
-			
-			} else  if (d.value <= maxVal) {
-				centreY = svgCentre.y - 65;
-			} else {
-				centreY = svgCentre.y;
-			}
-
-		d.x += (centreX - d.x) * (brake + 0.06) * alpha * 1.2;
-		d.y += (centreY - 100 - d.y) * (brake + 0.06) * alpha * 1.2;
-	};
-}
 
 function moveToEnts(alpha) {
 	return function(d) {
 		var centreY = entityCentres[d.entity].y;
-		if (d.entity === 'pub') {
+		if (d.river === 'pub') {
 			centreX = 1200;
 		} else {
 			centreX = entityCentres[d.entity].x;
@@ -283,7 +243,7 @@ function moveToFunds(alpha) {
 	return function(d) {
 		var centreY = entityCentres[d.entity].y;
 		var centreX = entityCentres[d.entity].x;
-		if (d.entity !== 'pub') {
+		if (d.river !== 'pub') {
 			centreY = 300;
 			centreX = 350;
 		} else {
@@ -341,11 +301,11 @@ function display(data) {
 		var node = {
 				radius: radiusScale(d.amount) / 5,
 				value: d.amount,
-				donor: d.donor,
+				country: d.country,
 				party: d.party,
-				partyLabel: d.partyname,
-				entity: d.entity,
-				entityLabel: d.entityname,
+				river: d.river,
+				record: d.record,
+				waterbase: d.waterbase,
 				color: d.color,
 				x: Math.random() * w,
 				y: -y
@@ -367,14 +327,15 @@ function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
-	var donor = d.donor;
-	var party = d.partyLabel;
-	var entity = d.entityLabel;
+	var river = d.river;
+	var country = d.country;
+	var record = d.record;
+	var waterbase = d.waterbase;
 	var offset = $("svg").offset();
 	
         
 	
-	responsiveVoice.speak( donor + amount + "pounds");
+
 	
 	
 
@@ -393,9 +354,9 @@ function mouseover(d, i) {
 	
 	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42' onError='this.src=\"https://github.com/favicon.ico\";'></span></p>" 	
 	
-	 							+ "<p> Recipient: <b>" + party + "</b></p>"
-								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
+	 							+ "<p> Main: <b>" + main + "</b></p>"
+								+ "<p> river: <b>" + river + "</b></p>"
+								+ "<p> waterbase: <b>&#163;" + comma(amount) + "</b></p>";
 	
 	
 	mosie.classed("active", true);
@@ -414,11 +375,6 @@ var Htmlchange = $("#mouse-visits").html();
 	}
 	
 
-
-function mouseout() {
-	
-	responsiveVoice.cancel();
-	
 	
 
 	// no more tooltips
@@ -435,6 +391,6 @@ $(document).ready(function() {
       var id = d3.select(this).attr("id");
       return transition(id);
     });
-    return d3.csv("data/7500up.csv", display);
+    return d3.csv("data-and-maps/data/waterbase-rivers-10/waterbase-rivers-quality/waterbase-rivers-csv-files", display);
 
 });
