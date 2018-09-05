@@ -139,7 +139,7 @@ function partyGroup() {
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
 		.on("tick", parties)
 		.start()
-		//.colourByParty();
+		.colourByParty();
 }
 
 function amounttype() {
