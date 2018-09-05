@@ -78,7 +78,7 @@ function transition(name) {
 		return fundsType();
 	}
 	
-
+}
 
 
 
