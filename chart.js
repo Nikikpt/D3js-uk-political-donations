@@ -138,8 +138,8 @@ function partyGroup() {
 		.friction(0.8)
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
 		.on("tick", parties)
-		.start();
-		.colourByParty();
+		.start()
+		//.colourByParty();
 }
 
 function amounttype() {
