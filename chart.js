@@ -264,7 +264,7 @@ function moveToDonationsByAmount(alpha) {
 		d.y += (centreY - 100 - d.y) * (brake + 0.06) * alpha * 1.2;
 	};
 	
-}
+
 
 function moveToEnts(alpha) {
 	return function(d) {
