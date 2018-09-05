@@ -247,26 +247,6 @@ function moveToParties(alpha) {
 	};
 }
 
-function moveToDonationsByAmount(alpha) {
-	return function(d) {
-		var centreX = svgCentre.x + 75;
-
-			if (d.value <= 2000001) {
-				centreY = svgCentre.y + 15;
-			
-			} else  if (d.value <= maxVal) {
-				centreY = svgCentre.y - 65;
-			} else {
-				centreY = svgCentre.y;
-			}
-
-		d.x += (centreX - d.x) * (brake + 0.06) * alpha * 1.2;
-		d.y += (centreY - 100 - d.y) * (brake + 0.06) * alpha * 1.2;
-	};
-        
-
-}
-
 
 function moveToEnts(alpha) {
 	return function(d) {
