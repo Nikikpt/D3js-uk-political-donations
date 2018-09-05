@@ -140,6 +140,15 @@ function partyGroup() {
 		.colourByParty();
 }
 	
+	function amounttype() {
+	force.gravity(0)
+		.friction(0.8)
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.on("tick", amountsdonations)
+		.start();
+		//.colourByParty();
+}
+	
 
 function donorType() {
 	force.gravity(0)
@@ -149,14 +158,6 @@ function donorType() {
 		.start();
 }
 	
-function amounttype() {
-	force.gravity(0)
-		.friction(0.8)
-		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
-		.on("tick", amountsdonations)
-		.start();
-		//.colourByParty();
-}
 
 function fundsType() {
 	force.gravity(0)
