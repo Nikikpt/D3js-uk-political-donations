@@ -194,7 +194,7 @@ function types(e) {
 
 
 function amountsdonations(e) {
-	node.each(moveToAmounts(e.alpha));
+	node.each(moveToDonationsByAmount(e.alpha));
 
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
@@ -247,26 +247,23 @@ function moveToParties(alpha) {
 	};
 }
 
-function moveToAmounts(alpha) {
+function moveToDonationsByAmount(alpha) {
 	return function(d) {
-		var centreY = svgCentre.y;
-		if (d.value <= 100000) {
-				centreX = svgCentre.x +70;
-				centreY = svgCentre.y -70;
-		} else if (d.value <= 500000) {
-				centreX = svgCentre.x +450;
-				centreY = svgCentre.y -70;
-		} else if (d.value <= 1000000) {
-				centreX = svgCentre.x +70;
-				centreY = svgCentre.y +250;
-		} else {
-				centreX = svgCentre.x +500; 
-				centreY = svgCentre.y +250;
-		}
-		
-		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
-		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;	
+		var centreX = svgCentre.x + 75;
+
+			if (d.value <= 2000001) {
+				centreY = svgCentre.y + 15;
+			
+			} else  if (d.value <= maxVal) {
+				centreY = svgCentre.y - 65;
+			} else {
+				centreY = svgCentre.y;
+			}
+
+		d.x += (centreX - d.x) * (brake + 0.06) * alpha * 1.2;
+		d.y += (centreY - 100 - d.y) * (brake + 0.06) * alpha * 1.2;
 	};
+        
 
 
 }
