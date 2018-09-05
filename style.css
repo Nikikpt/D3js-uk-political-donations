@@ -50,6 +50,56 @@ li {
     width: 272px;
 }
 
+ #view-amount-type {
+height: 100%;
+}
+
+#First {
+    
+    left: 100px;
+    top: 500px;
+    position: absolute;
+}
+    
+#Second {
+    
+    left: 410px;
+    top: 500px;
+    position: absolute;
+}
+        
+ #Third {
+     
+     left: 750px;
+     top: 500px;
+     position absolute;
+        
+    } 
+    
+#Fourth {
+    
+    left: 100px;
+     top: 120px;
+     position absolute;
+    
+}
+    
+#Fifth {
+
+    left: 410px;
+     top: 120px;
+     position absolute;
+    
+}
+
+#Sixth {
+
+     left: 750px;
+     top: 120px;
+     position absolute;
+    
+}
+
 
 
 /*  Public or private funds view */
