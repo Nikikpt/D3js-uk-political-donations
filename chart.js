@@ -155,7 +155,7 @@ function amounttype() {
 		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
 		.on("tick", amountsdonations)
 		.start();
-		//.colourByParty();
+		.colourByParty();
 }
 
 function fundsType() {
