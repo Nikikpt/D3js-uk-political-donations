@@ -266,7 +266,7 @@ function moveToDonationsByAmount(alpha) {
         
 
 
-}
+
 
 function moveToEnts(alpha) {
 	return function(d) {
