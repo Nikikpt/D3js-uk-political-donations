@@ -87,7 +87,7 @@ function transition(name) {
 		$("#view-amount-type").fadeIn(1000);
 		return amounttype();
 	}
-}
+
 
 
 function start() {
