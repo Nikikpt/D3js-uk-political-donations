@@ -411,7 +411,13 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-
+var Htmlchange = $("#mouse-visits").html();
+	var newHtml = "<div><img src='" + imageFile +"' class='icon-image' align='middle' onError='this.src=\"https://github.com/favicon.ico\";'/>"+
+		"<span>" + donor + "</span>"
+		"</div>"
+	$("#mouse-visits").html(newHtml + Htmlchange);
+	
+	}
 
 function mouseout() {
 	
