@@ -88,7 +88,7 @@ function transition(name) {
 		return amounttype();
 	}
 	
-}
+
 
 function start() {
 
