@@ -21,7 +21,7 @@ var entityCentres = {
 		individual: {x: w / 3.65, y: h / 3.3},
 	};
 
-var fill = d3.scale.ordinal().range(["#F02233", "#087FBD", "#FDBB30"]);
+var fill = d3.scale.ordinal().range(["#FFFF66", "#009999", "#3333FF"]);
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
@@ -194,8 +194,8 @@ function types(e) {
 			.attr("cy", function(d) {return d.y; });
 }
 	
-	function amountsdonations(e) {
-	node.each(moveToDonationsByAmount(e.alpha));
+function amountsdonations(e) {
+	node.each(moveToDonationsAmount(e.alpha));
 
 		node.attr("cx", function(d) { return d.x; })
 			.attr("cy", function(d) {return d.y; });
@@ -250,7 +250,7 @@ function moveToParties(alpha) {
 	};
 }
 	
-	function moveToDonationsByAmount(alpha) {
+	function moveToDonationsAmount(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 75;
 
@@ -410,14 +410,6 @@ function mouseover(d, i) {
     .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
-	
-var Htmlchange = $("#mouse-visits").html();
-	var newHtml = "<div><img src='" + imageFile +"' class='icon-image' align='middle' onError='this.src=\"https://github.com/favicon.ico\";'/>"+
-		"<span>" + donor + "</span>"
-		"</div>"
-	$("#mouse-visits").html(newHtml + Htmlchange);
-	
-	}
 	
 
 
